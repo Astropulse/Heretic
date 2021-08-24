@@ -381,10 +381,10 @@ shadow:addCallback("step", function(self)
 		vars.pGravity2 = 0
 		data.start = false
 	end
-	if input.checkControl("down", player) == input.HELD and not player:collidesMap(player.x,player.y+3) then
+	if (input.checkControl("down", player) == input.HELD or input.getGamepadAxis("lv", input.getPlayerGamepad(player)) > 0.2) and not player:collidesMap(player.x,player.y+3) then
 		vars.pVspeed = vars.pVspeed + 0.1
 	end
-	if input.checkControl("up", player) == input.HELD and not player:collidesMap(player.x,player.y-3) then
+	if (input.checkControl("up", player) == input.HELD or input.getGamepadAxis("lv", input.getPlayerGamepad(player)) < -0.2) and not player:collidesMap(player.x,player.y-3) then
 		vars.pVspeed = vars.pVspeed - 0.1
 	end
 	if player:collidesMap(player.x,player.y+3) then
